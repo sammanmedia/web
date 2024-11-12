@@ -18,7 +18,7 @@ generateBtn.addEventListener('click', () => {
          return res.json() 
       }).then(data => {
          bratImg.src = data.url;
-         msg.innerHTML = `<marquee>Cara simpan gambar cukup di hold lalu <strong>Simpan Gambar</strong>, &nbsp; untuk desktop klik kanan lalu <strong>Save As</strong></marquee>`
+         msg.innerHTML = `Cara simpan gambar cukup di hold lalu <strong>Simpan Gambar</strong>, &nbsp; untuk desktop klik kanan lalu <strong>Save As</strong>`
       }).finally(() => {
          msgBar.style.display = "block";
          generateBtn.removeAttribute('disabled')
