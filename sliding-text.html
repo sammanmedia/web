@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animasi Teks Berganti</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5c16c;
+            font-family: Arial, sans-serif;
+        }
+
+        .judul {
+            font-size: 40px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .text-container {
+            display: inline-block;
+            overflow: hidden;
+            height: 50px;
+            vertical-align: middle;
+            position: relative;
+            width: 250px;
+        }
+
+        .text-slide {
+            position: absolute;
+            width: 100%;
+            text-align: left;
+            animation: slideUp 2s infinite;
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(100%); opacity: 0; }
+            25% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="judul">
+        <span>Selamat Datang di </span>
+        <span class="text-container">
+            <span id="changingText" class="text-slide">UMKM</span>
+        </span>
+    </h1>
+
+    <script>
+        const texts = ["UMKM", "FILE", "INFO LOKER", "FORUM"];
+        let index = 0;
+        const textElement = document.getElementById("changingText");
+
+        function changeText() {
+            index = (index + 1) % texts.length;
+            textElement.style.animation = "none"; // Reset animasi agar bisa dimulai ulang
+            void textElement.offsetWidth; // Trigger reflow agar animasi berjalan ulang
+            textElement.style.animation = "slideUp 1s ease-in-out";
+            textElement.textContent = texts[index];
+        }
+
+        setInterval(changeText, 1000);
+    </script>
+
+</body>
+</html>
